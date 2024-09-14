@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "537838862452",
+    "project_id": "shopapp-ad98e",
+    "storage_bucket": "shopapp-ad98e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:537838862452:android:087ea7bf4ecd73771e5121",
+        "android_client_info": {
+          "package_name": "com.example.cpu_attendance_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDdkBNbaJ1t-nnRxKjjBKjAUM6mACmbV4M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
