@@ -1,5 +1,7 @@
 import 'package:cpu_attendance_app/pages/bottomnav.dart';
 import 'package:cpu_attendance_app/pages/login.dart';
+import 'package:cpu_attendance_app/services/database.dart';
+import 'package:cpu_attendance_app/services/shared_pref.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:random_string/random_string.dart';
@@ -34,11 +36,17 @@ class _SignupState extends State<Signup> {
               style: TextStyle(fontSize: 20.0),
             )));
             String Id= randomAlphaNumeric(10);
+            await SharedPreferenceHelper().saveUserEmail(mailcontroller.text);
+            await SharedPreferenceHelper().saveUserId(Id);
+            await SharedPreferenceHelper().saveUserName(namecontroller.text);
+            await SharedPreferenceHelper().saveUserImage("https://firebasestorage.googleapis.com/v0/b/shopapp-ad98e.appspot.com/o/428630040_7520385344678779_2407399116986394688_n.jpg?alt=media&token=00b38cd2-b83f-43e2-ab22-fde82680962d");
             Map<String, dynamic> userInfoMap={
               "Name": namecontroller.text,
               "Email": mailcontroller.text,
               "Id": Id,
+              "Image": "https://firebasestorage.googleapis.com/v0/b/shopapp-ad98e.appspot.com/o/428630040_7520385344678779_2407399116986394688_n.jpg?alt=media&token=00b38cd2-b83f-43e2-ab22-fde82680962d"
             } ; 
+            await DatabaseMethods().addUserDetails(userInfoMap, Id);
             Navigator.push(context, MaterialPageRoute(builder: (context)=> BottomNav()));
       } on FirebaseException catch (e) {
         if (e.code == 'weak-password') {

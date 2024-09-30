@@ -1,15 +1,21 @@
+import 'package:cpu_attendance_app/Admin/add_product.dart';
+import 'package:cpu_attendance_app/Admin/admin_login.dart';
+import 'package:cpu_attendance_app/Admin/all_orders.dart';
 import 'package:cpu_attendance_app/pages/bottomnav.dart';
 import 'package:cpu_attendance_app/pages/home.dart';
 import 'package:cpu_attendance_app/pages/login.dart';
 import 'package:cpu_attendance_app/pages/product_detail.dart';
 import 'package:cpu_attendance_app/pages/signup.dart';
 import 'package:cpu_attendance_app/pages/onboarding.dart';
+import 'package:cpu_attendance_app/services/constant.dart';
 import 'package:flutter/material.dart';
 import 'package:cpu_attendance_app/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  Stripe.publishableKey=publishablekey;
   await Firebase.initializeApp();
   runApp(const MyApp());
 }
@@ -27,7 +33,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: Signup()
+      home: BottomNav()
     );
   }
 }
